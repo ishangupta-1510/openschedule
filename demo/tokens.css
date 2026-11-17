@@ -1,0 +1,27 @@
+/* Optional demo palette. The library stylesheet contains no palette values. */
+:root {
+  --os-color-accent: #087f73;
+  --os-color-ink: #203631;
+  --os-color-line: #e2e9e5;
+  --os-color-surface: #fff;
+  --os-color-surface-subtle: #f5f8f5;
+  --os-color-focus: #e3a332;
+  --os-color-scroll-thumb: #bdcec4;
+  --os-color-shadow-soft: #142d1e0a;
+  --os-color-shadow-hover: #16372520;
+  --os-color-muted: #516857;
+  --os-color-now: #df6b48;
+  --os-color-background-event: #c4d9c5;
+  --os-color-surface-muted: #f8faf8;
+  --os-color-text-muted: #8d9b93;
+  --os-color-text-secondary: #4c6353;
+  --os-color-empty: #86968b;
+  --os-color-drag-surface: #183d31;
+  --os-color-shadow-drag: #16372530;
+  --os-color-transparent: transparent;
+  --os-color-holiday: #eef0f5;
+  --os-color-warning: #78520d;
+  --os-color-warning-surface: #fff7df;
+  --os-color-danger: #a44845;
+  --os-color-danger-surface: #fff0ed;
+}

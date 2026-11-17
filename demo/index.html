@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>OpenSchedule — Your time, thoughtfully arranged.</title>
+    <link rel="stylesheet" href="/demo/tokens.css" />
+    <link rel="stylesheet" href="/src/style.css" />
+    <link rel="stylesheet" href="/demo/demo.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <a class="brand" href="/">o<span>OpenSchedule</span><sup>α</sup></a>
+      <div class="workspace">
+        <span class="avatar">S</span>
+        <div>Studio workspace<small>Independent by design</small></div>
+      </div>
+      <p class="overline">WORKSPACE</p>
+      <a class="active" href="#calendar">◫ &nbsp; Schedule</a
+      ><button id="resources">☷ &nbsp; Manage resources</button
+      ><button id="export">↓ &nbsp; Export schedule</button
+      ><label class="import-label"
+        >↑ &nbsp; Import schedule<input
+          type="file"
+          id="import"
+          accept="application/json"
+          hidden /></label
+      ><button id="print">▤ &nbsp; Print schedule</button>
+      <div class="sidebar-bottom">
+        <span class="open-dot"></span> MIT licensed · v0.1.0
+        <p>Your data stays in this browser.<br />No account. No license key.</p>
+      </div>
+    </aside>
+    <main>
+      <header class="topbar">
+        <span>Workspace <span class="slash">/</span> Schedule</span
+        ><span class="profile">ST</span>
+      </header>
+      <div class="content">
+        <div class="intro">
+          <div>
+            <p class="overline">A LITTLE ROOM FOR EVERYTHING</p>
+            <h1>Your week, in perspective.</h1>
+            <p class="subtitle">Bring people, spaces, and plans together.</p>
+          </div>
+          <button id="new-event" class="primary">＋ &nbsp; New event</button>
+        </div>
+        <div class="stats">
+          <div>
+            <span class="stat-icon">◷</span>
+            <div>
+              <strong id="event-count">—</strong><small>Scheduled events</small>
+            </div>
+          </div>
+          <div>
+            <span class="stat-icon amber">♧</span>
+            <div>
+              <strong id="resource-count">—</strong
+              ><small>Shared resources</small>
+            </div>
+          </div>
+          <div>
+            <span class="stat-icon violet">↗</span>
+            <div>
+              <strong>One clear view</strong
+              ><small>Less coordination, more creating</small>
+            </div>
+          </div>
+        </div>
+        <div class="calendar-tools">
+          <div class="legend">
+            <span><i></i> Design</span
+            ><span><i class="amber"></i> Engineering</span
+            ><span><i class="violet"></i> Spaces</span>
+          </div>
+          <input
+            type="search"
+            id="search"
+            placeholder="Find a resource…"
+            aria-label="Find a resource"
+          />
+        </div>
+        <div id="calendar"></div>
+        <footer>
+          <span
+            >Drag to move · Drag edges to resize · Click an empty space to
+            create</span
+          ><span>Made for the way you work.</span>
+        </footer>
+        <p class="notice" id="notice" role="status"></p>
+      </div>
+    </main>
+    <dialog id="editor">
+      <form id="event-form">
+        <div class="dialog-head">
+          <div>
+            <p class="overline">MAKE SPACE FOR A PLAN</p>
+            <h2 id="editor-title">New event</h2>
+          </div>
+          <button type="button" id="close" aria-label="Close editor">×</button>
+        </div>
+        <label
+          >Event title<input
+            name="title"
+            required
+            maxlength="200"
+            placeholder="What’s happening?"
+        /></label>
+        <div class="form-row">
+          <label
+            >Starts<input name="start" type="datetime-local" required /></label
+          ><label
+            >Ends<input name="end" type="datetime-local" required
+          /></label>
+        </div>
+        <div class="form-row">
+          <label
+            >Type<select name="kind">
+              <option value="shift">Shift / appointment</option>
+              <option value="leave">Leave</option>
+            </select></label
+          ><label
+            >Time zone<input
+              name="timeZone"
+              value="local"
+              placeholder="America/New_York"
+              required
+          /></label>
+        </div>
+        <label class="check"
+          ><input name="allDay" type="checkbox" /> All-day event (use midnight
+          boundaries)</label
+        ><label
+          >Resources<select name="resourceIds" multiple size="5"></select
+          ><small>Ctrl / Cmd to select more than one</small></label
+        >
+        <div class="form-row">
+          <label>Color<input name="color" type="color" value="#087f73" /></label
+          ><label
+            >Repeat<select name="repeat">
+              <option value="none">Does not repeat</option>
+              <option value="daily">Daily · 30 occurrences</option>
+              <option value="weekly">Weekly · 12 occurrences</option>
+            </select></label
+          >
+        </div>
+        <p id="form-error" role="alert"></p>
+        <div class="dialog-actions">
+          <button type="button" id="delete-event" class="danger">
+            Delete series</button
+          ><button class="primary" type="submit">Save event</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog id="resource-editor">
+      <form id="resource-form">
+        <div class="dialog-head">
+          <h2>Shared resources</h2>
+          <button
+            type="button"
+            id="close-resources"
+            aria-label="Close resources"
+          >
+            ×
+          </button>
+        </div>
+        <div id="resource-list"></div>
+        <label
+          >Name<input
+            name="title"
+            required
+            placeholder="New person, room, or equipment" /></label
+        ><label>Team<input name="group" placeholder="Design" /></label
+        ><button class="primary">Add resource</button>
+        <p id="resource-error" role="alert"></p>
+      </form>
+    </dialog>
+    <script type="module" src="/demo/demo.js"></script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+import type { DateInput, Range, Zone } from "./types.js";
+export declare const MINUTE = 60000;
+export declare const DAY = 86400000;
+export declare function validateZone(zone: Zone): void;
+export declare function parts(n: number, zone: Zone): {
+    year: number;
+    month: number;
+    day: number;
+    weekday: number;
+    hour: number;
+    minute: number;
+    second: number;
+};
+export declare function timestamp(value: DateInput, zone?: Zone): number;
+export declare function civil(year: number, month: number, day: number, zone: Zone): number;
+export declare function dayStart(n: number, zone: Zone): number;
+export declare function addDays(n: number, count: number, zone: Zone): number;
+export declare function atMinute(day: number, minute: number, zone: Zone): number;
+export declare function dateKey(n: number, zone: Zone): string;
+export declare function overlaps(a: Range, b: Range): boolean;
+export declare function format(n: number, locale: string, zone: Zone, options: Intl.DateTimeFormatOptions): string;
+export declare function minutes(value: string): number;
