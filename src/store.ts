@@ -70,6 +70,11 @@ export class ScheduleStore {
   }
   private normalize(input: EventInput): CalendarEvent {
     input = clone(input);
+    const isCivilDate = (value: unknown): boolean =>
+      typeof value === "string" && /^\d{4}-\d{2}-\d{2}$/.test(value);
+    input.allDay ??=
+      isCivilDate(input.start) &&
+      (input.end === undefined || isCivilDate(input.end));
     const zone =
       input.timeZone ??
       (input.resourceIds?.length === 1

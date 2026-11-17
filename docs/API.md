@@ -41,7 +41,7 @@ Required: `id`, `title`. Optional: `parentId`, `group`, `color`, `capacity`, `ti
 
 ## Events and recurrence
 
-Required: `id`, `title`, `start`. `end` defaults to one hour, or one civil day when `allDay`. All-day boundaries must be midnight in the event zone. Additional fields: `resourceIds`, `timeZone`, `kind`, `color`, `editable`, `display`, `data`, `recurrence` or `rrule`.
+Required: `id`, `title`, `start`. `end` defaults to one hour, or one civil day when `allDay`. Date-only start/end strings infer an all-day event unless `allDay: false` is supplied. All-day boundaries must be midnight in the event zone. Additional fields: `resourceIds`, `timeZone`, `kind`, `color`, `editable`, `display`, `data`, `recurrence` or `rrule`.
 
 `display: 'background'` renders a non-interactive range; it does not consume capacity. `kind: 'leave'` enables leave conflict reporting and policy. Undefined kind means a shift/appointment.
 

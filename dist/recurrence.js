@@ -42,7 +42,8 @@ export function expand(event, range, zone) {
                 weekdays.includes(parts(day, zone).weekday);
         if (!eligible)
             continue;
-        const start = atMinute(day, p.hour * 60 + p.minute, zone) + (event.start % 60_000);
+        const start = atMinute(day, p.hour * 60 + p.minute, zone) +
+            (((event.start % 60_000) + 60_000) % 60_000);
         if (start < event.start || start > until)
             continue;
         const clock = parts(start, zone);
@@ -52,7 +53,7 @@ export function expand(event, range, zone) {
         if (rule.count && ordinal > rule.count)
             break;
         const end = atMinute(addDays(day, spanDays, zone), endParts.hour * 60 + endParts.minute, zone) +
-            (event.end % 60_000);
+            (((event.end % 60_000) + 60_000) % 60_000);
         if (end > start && !excluded.has(start) && overlaps({ start, end }, range))
             result.push(make(start, end));
     }

@@ -32,6 +32,10 @@ export class ScheduleStore {
     }
     normalize(input) {
         input = clone(input);
+        const isCivilDate = (value) => typeof value === "string" && /^\d{4}-\d{2}-\d{2}$/.test(value);
+        input.allDay ??=
+            isCivilDate(input.start) &&
+                (input.end === undefined || isCivilDate(input.end));
         const zone = input.timeZone ??
             (input.resourceIds?.length === 1
                 ? this.resourceMap.get(input.resourceIds[0])?.timeZone

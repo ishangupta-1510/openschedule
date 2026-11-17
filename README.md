@@ -133,6 +133,7 @@ Additional views: `resourceDay`, `resourceWeek`, `resourceGrid`, `day`, `week`, 
 ## Validation and semantics
 
 - Intervals use **exclusive ends**. Adjacent shifts do not overlap.
+- Date-only start/end strings infer all-day events; `allDay: false` explicitly requests a timed event.
 - Strings without offsets are interpreted in `event.timeZone`, otherwise the sole resource's zone, otherwise the store zone. Multiple-resource events use the store zone unless explicit. Changing resource assignments preserves absolute instants and the event zone.
 - Overnight shifts require the end date to be the following day. Elapsed hours can be 7 or 9 for a nominal 22:00–06:00 shift during DST changes.
 - Nonexistent civil input clocks are rejected. Ambiguous fall-back clocks choose the earlier instant; pass an explicit offset to choose the later one. Recurrence skips nonexistent start clocks. General civil-day arithmetic moves a nonexistent result forward.
